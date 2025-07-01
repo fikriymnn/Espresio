@@ -38,6 +38,12 @@ public class SalesReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales_report);
 
+        // Enable back button in action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Sales Report");
+        }
+
         initViews();
         setupRecyclerView();
 
@@ -131,5 +137,11 @@ public class SalesReportActivity extends AppCompatActivity {
     private void updateSummary(int totalSales, double totalAmount) {
         tvTotalSales.setText("Total Sales: " + totalSales);
         tvTotalAmount.setText("Total Amount: " + currencyFormat.format(totalAmount));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

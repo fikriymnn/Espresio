@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="@drawable/dialog_background">
+    android:background="@drawable/dialog_background"
+    android:minWidth="350dp">
 
     <!-- Title -->
     <TextView
@@ -44,7 +45,7 @@
         android:orientation="horizontal"
         android:layout_marginBottom="16dp">
 
-        <!-- Current Stock -->
+        <!-- Current Stock (Disabled and set to 0) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,8 +59,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Current Stock"
+                android:text="0"
                 android:inputType="numberDecimal"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:enabled="false"
+                android:focusable="false"
+                android:alpha="0.6" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

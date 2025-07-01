@@ -14,7 +14,7 @@ import java.util.List;
 public class PurchaseIngredientsActivity extends AppCompatActivity {
     private Spinner spinnerIngredients;
     private EditText etQuantity, etUnitPrice, etSupplier;
-    private TextView tvTotalPrice;
+    private TextView tvTotalPrice, tvUnit;
     private Button btnPurchase;
 
     private FirebaseFirestore db;
@@ -44,6 +44,7 @@ public class PurchaseIngredientsActivity extends AppCompatActivity {
         etUnitPrice = findViewById(R.id.et_unit_price);
         etSupplier = findViewById(R.id.et_supplier);
         tvTotalPrice = findViewById(R.id.tv_total_price);
+        tvUnit = findViewById(R.id.tv_unit);
         btnPurchase = findViewById(R.id.btn_purchase);
     }
 
@@ -81,12 +82,17 @@ public class PurchaseIngredientsActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, android.view.View view, int position, long id) {
                 if (position < ingredients.size()) {
                     selectedIngredient = ingredients.get(position);
+                    // Update unit display ketika ingredient dipilih
+                    tvUnit.setText(selectedIngredient.getUnit());
                     calculateTotal();
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Reset unit display ketika tidak ada yang dipilih
+                tvUnit.setText("unit");
+            }
         });
 
         etQuantity.addTextChangedListener(new android.text.TextWatcher() {
@@ -122,7 +128,9 @@ public class PurchaseIngredientsActivity extends AppCompatActivity {
         try {
             double quantity = Double.parseDouble(etQuantity.getText().toString());
             double unitPrice = Double.parseDouble(etUnitPrice.getText().toString());
-            tvTotalPrice.setText("Total: Rp " +  unitPrice);
+            // Perbaikan: kalkulasi total = quantity * unitPrice
+            double total = quantity * unitPrice;
+            tvTotalPrice.setText("Total: Rp " + String.format("%.2f", total));
         } catch (NumberFormatException e) {
             tvTotalPrice.setText("Total: Rp 0.00");
         }
@@ -197,6 +205,7 @@ public class PurchaseIngredientsActivity extends AppCompatActivity {
         etUnitPrice.setText("");
         etSupplier.setText("");
         tvTotalPrice.setText("Total: Rp 0.00");
+        tvUnit.setText("unit"); // Reset unit display
         spinnerIngredients.setSelection(0);
     }
 }

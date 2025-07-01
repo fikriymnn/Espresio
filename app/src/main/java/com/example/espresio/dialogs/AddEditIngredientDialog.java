@@ -57,7 +57,7 @@ public class AddEditIngredientDialog extends Dialog {
     }
 
     private void setupSpinner() {
-        String[] units = {"grams", "kg", "ml", "liter", "pieces", "cups", "tbsp", "tsp"};
+        String[] units = {"grams", "ml"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_dropdown_item_1line, units);
         spinnerUnit.setAdapter(adapter);

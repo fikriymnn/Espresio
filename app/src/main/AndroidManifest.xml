@@ -61,6 +61,20 @@
             android:name=".SalesReportActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".PurchaseReportActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SaleDetailActivity"
+            android:label="Sale Details"
+            android:parentActivityName=".SalesReportActivity"
+            android:theme="@style/Theme.Espresio">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SalesReportActivity" />
+        </activity>
+
     </application>
 
 </manifest>

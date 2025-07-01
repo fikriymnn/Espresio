@@ -56,24 +56,48 @@
                     android:background="@drawable/spinner_background"
                     android:padding="12dp" />
 
-                <!-- Quantity Input -->
-                <com.google.android.material.textfield.TextInputLayout
+                <!-- Quantity Input with Unit -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    app:boxStrokeColor="#3498DB"
-                    app:hintTextColor="#3498DB">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_quantity"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="Quantity"
-                        android:inputType="numberDecimal"
-                        android:drawableLeft="@drawable/ic_quantity"
-                        android:drawablePadding="12dp" />
+                        android:layout_weight="1"
+                        android:layout_marginEnd="12dp"
+                        app:boxStrokeColor="#3498DB"
+                        app:hintTextColor="#3498DB">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_quantity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Quantity"
+                            android:inputType="numberDecimal"
+                            android:drawableLeft="@drawable/ic_quantity"
+                            android:drawablePadding="12dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Unit Display -->
+                    <TextView
+                        android:id="@+id/tv_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="gram"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_secondary"
+                        android:background="@drawable/edittext_background"
+                        android:padding="12dp"
+                        android:minWidth="60dp"
+                        android:gravity="center" />
+
+                </LinearLayout>
 
                 <!-- Unit Price Input -->
                 <com.google.android.material.textfield.TextInputLayout
@@ -167,32 +191,6 @@
             app:cardElevation="4dp"
             android:background="#FFFFFF">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Recent Purchases"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#2C3E50"
-                    android:layout_marginBottom="12dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="View purchase history →"
-                    android:textSize="14sp"
-                    android:textColor="#3498DB"
-                    android:padding="8dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:clickable="true" />
-
-            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
