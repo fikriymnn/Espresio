@@ -129,7 +129,7 @@ public class PurchaseIngredientsActivity extends AppCompatActivity {
             double quantity = Double.parseDouble(etQuantity.getText().toString());
             double unitPrice = Double.parseDouble(etUnitPrice.getText().toString());
             // Perbaikan: kalkulasi total = quantity * unitPrice
-            double total = quantity * unitPrice;
+            double total = unitPrice;
             tvTotalPrice.setText("Total: Rp " + String.format("%.2f", total));
         } catch (NumberFormatException e) {
             tvTotalPrice.setText("Total: Rp 0.00");

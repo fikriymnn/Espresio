@@ -164,7 +164,8 @@
                             android:text="Administrator"
                             android:textSize="14sp"
                             android:layout_marginBottom="8dp"
-                            android:buttonTint="@color/primary" />
+                            android:buttonTint="@color/primary"
+                            android:visibility="gone"/>
 
                         <RadioButton
                             android:id="@+id/rb_employee"
